@@ -19,7 +19,7 @@ class RootLikeMethod(Method[bool]):
       :class:`bool`
     """
 
-    __name__ = "/"
+    __name__ = "like"
     __returning__ = bool
 
     def request(self, interface: Interface) -> Request:

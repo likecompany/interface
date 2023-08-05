@@ -1,7 +1,7 @@
-from .send_code import SendCode
+from .authorization import Authorization
 from .user import User
 
 __all__ = (
-    "SendCode",
+    "Authorization",
     "User",
 )

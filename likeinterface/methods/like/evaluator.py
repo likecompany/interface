@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class EvaluateWinsMethod(Method[List[Hand]]):
+class EvaluatorMethod(Method[List[Hand]]):
     """
     Use this method to evaluate hands.
 
@@ -24,7 +24,7 @@ class EvaluateWinsMethod(Method[List[Hand]]):
       Array of :class:`likeinterface.types.like.hand.Hand`
     """
 
-    __name__ = "/poker.evaluateWins"
+    __name__ = "like.evaluator"
     __returning__ = List[Hand]
 
     board: List[str]

@@ -19,7 +19,7 @@ class RootAuthMethod(Method[bool]):
       :class:`bool`
     """
 
-    __name__ = "/"
+    __name__ = "auth"
     __returning__ = bool
 
     def request(self, interface: Interface) -> Request:

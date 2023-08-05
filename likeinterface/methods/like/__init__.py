@@ -1,7 +1,7 @@
-from .evaluate_wins import EvaluateWinsMethod
+from .evaluator import EvaluatorMethod
 from .root_like import RootLikeMethod
 
 __all__ = (
-    "EvaluateWinsMethod",
+    "EvaluatorMethod",
     "RootLikeMethod",
 )

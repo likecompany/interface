@@ -1,15 +1,9 @@
-from .get_info import GetInfoMethod
-from .log_out import LogOutMethod
+from .get_authorization_information import GetAuthorizationInformationMethod
 from .root_auth import RootAuthMethod
-from .send_code import SendCodeMethod
 from .sign_in import SignInMethod
-from .sign_up import SignUpMethod
 
 __all__ = (
-    "GetInfoMethod",
-    "LogOutMethod",
+    "GetAuthorizationInformationMethod",
     "RootAuthMethod",
-    "SendCodeMethod",
     "SignInMethod",
-    "SignUpMethod",
 )

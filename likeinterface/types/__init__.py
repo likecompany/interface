@@ -1,5 +1,5 @@
-from .auth import SendCode, User
+from .auth import Authorization, User
 from .base import LikeObject, MutableLikeObject
 from .like import Hand
 
-__all__ = ("Hand", "LikeObject", "MutableLikeObject", "SendCode", "User")
+__all__ = ("Authorization", "Hand", "LikeObject", "MutableLikeObject", "User")

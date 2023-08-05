@@ -9,19 +9,23 @@ if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class GetInfoMethod(Method[User]):
+class GetAuthorizationInformationMethod(Method[User]):
     """
     Use this method to get information about user.
 
     Parameters
-      This constructor does not require any parameters.
+      Name            | Type   | Required | Description
+
+      1. access_token | String | Yes      | Auth access token
 
     Result
       :class:`likeinterface.types.auth.user.User`
     """
 
-    __name__ = "/auth.getInfo"
+    __name__ = "auth.getAuthorizationInformation"
     __returning__ = User
+
+    access_token: str
 
     def request(self, interface: Interface) -> Request:
         return Request(method=self.__name__, data=self.model_dump())
