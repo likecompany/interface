@@ -28,7 +28,7 @@ class SignInMethod(Method[Authorization]):
       :class:`likeinterface.types.auth.authorization.Authorization`
     """
 
-    __name__ = "/auth.signIn"
+    __name__ = "auth.signIn"
     __returning__ = Authorization
 
     telegram_id: int
