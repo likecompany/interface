@@ -9,23 +9,23 @@ if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class GetAuthorizationInformationMethod(Method[User]):
+class GetUserInformationMethod(Method[User]):
     """
-    Use this method to get information about current user.
+    Use this method to get information about any user.
 
     Parameters
-      Name            | Type   | Required | Description
+      Name       | Type    | Required | Description
 
-      1. access_token | String | Yes      | Auth access token
+      1. user_id | Integer | Yes      | User ID in the system
 
     Result
       :class:`likeinterface.types.auth.user.User`
     """
 
-    __name__ = "auth.getAuthorizationInformation"
+    __name__ = "auth.getUserInformation"
     __returning__ = User
 
-    access_token: str
+    user_id: int
 
     def request(self, interface: Interface) -> Request:
         return Request(method=self.__name__, data=self.model_dump())

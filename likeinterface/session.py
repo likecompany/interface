@@ -5,7 +5,6 @@ from collections import defaultdict
 from typing import TYPE_CHECKING, Any, Dict, Optional, cast
 
 import httpx
-from fastapi.requests import Request
 
 from likeinterface.constants import REQUEST_TIMEOUT
 from likeinterface.exceptions import LikeNetworkError
@@ -52,29 +51,16 @@ class Session(SessionManager):
         )
 
     async def request(
-        self,
-        interface: Interface,
-        method: Method[LikeType],
-        timeout: Optional[int] = None,
-        fastapi_request: Optional[Request] = None,
+        self, interface: Interface, method: Method[LikeType], timeout: Optional[int] = None
     ) -> LikeType:
         await self.create()
 
         request = method.request(interface=interface)
 
-        if fastapi_request:
-            json = await fastapi_request.json()
-
-            if isinstance(json, Dict):
-                request.data |= json
-
         try:
             response = await self.session.post(  # type: ignore[union-attr]
                 url=interface.network.url(method=method.__name__),
                 json=request.data,
-                params=fastapi_request.query_params if fastapi_request else None,
-                headers=fastapi_request.headers if fastapi_request else None,
-                cookies=fastapi_request.cookies if fastapi_request else None,
                 timeout=REQUEST_TIMEOUT if not timeout else timeout,
             )
         except asyncio.TimeoutError:
