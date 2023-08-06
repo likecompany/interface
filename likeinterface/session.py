@@ -58,11 +58,12 @@ class Session(SessionManager):
         request = method.request(interface=interface)
 
         try:
-            response = await self.session.post(  # type: ignore[union-attr]
+            async with self.session.post(
                 url=interface.network.url(method=method.__name__),
                 json=request.data,
                 timeout=REQUEST_TIMEOUT if not timeout else timeout,
-            )
+            ) as response:
+                content = await response.text()
         except asyncio.TimeoutError:
             raise LikeNetworkError("Exception %s: %s." % (method, "request timeout error"))
         except ClientError as e:
@@ -70,7 +71,5 @@ class Session(SessionManager):
                 "Exception for method %s: %s." % (method.__name__, f"{type(e).__name__}: {e}")
             )
 
-        response = response_validator(
-            method=method, status_code=response.status, content=response.text
-        )
+        response = response_validator(method=method, status_code=response.status, content=content)
         return cast(LikeType, response.result)
