@@ -4,7 +4,7 @@ from .auth import (
     RootAuthMethod,
     SignInMethod,
 )
-from .balance import GetBalanceMethod, RootBalanceMethod
+from .balance import GetBalanceMethod, RootBalanceMethod, SetNewBalanceMethod
 from .base import LikeType, Method, Request, Response
 from .like import EvaluatorMethod, RootLikeMethod
 
@@ -21,5 +21,6 @@ __all__ = (
     "RootAuthMethod",
     "RootBalanceMethod",
     "RootLikeMethod",
+    "SetNewBalanceMethod",
     "SignInMethod",
 )
