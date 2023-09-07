@@ -12,6 +12,7 @@ class Network:
     """
 
     base: str
+    file_base: str
 
     def url(self, **kwargs: Any) -> str:
         """
@@ -22,3 +23,13 @@ class Network:
         """
 
         return self.base.format(**kwargs)
+
+    def file(self, **kwargs: Any) -> str:
+        """
+        Formats base url for file.
+
+        :param kwargs: format kwargs
+        :return: url
+        """
+
+        return self.file_base.format(**kwargs)

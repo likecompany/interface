@@ -2,11 +2,10 @@ from __future__ import annotations
 
 import asyncio
 from collections import defaultdict
-from typing import TYPE_CHECKING, Any, Dict, Optional, cast
+from typing import TYPE_CHECKING, Any, AsyncGenerator, Dict, Optional, cast
 
 from aiohttp.client import ClientError, ClientSession
 
-from likeinterface.constants import REQUEST_TIMEOUT
 from likeinterface.exceptions import LikeNetworkError
 from likeinterface.methods import LikeType, Method
 from likeinterface.utils.response_validator import response_validator
@@ -51,7 +50,7 @@ class Session(SessionManager):
         )
 
     async def request(
-        self, interface: Interface, method: Method[LikeType], timeout: Optional[int] = None
+        self, interface: Interface, method: Method[LikeType], timeout: int = 60
     ) -> LikeType:
         await self.create()
 
@@ -61,7 +60,7 @@ class Session(SessionManager):
             async with self.session.post(
                 url=interface.network.url(method=method.__name__),
                 json=request.data,
-                timeout=REQUEST_TIMEOUT if not timeout else timeout,
+                timeout=timeout,
             ) as response:
                 content = await response.text()
         except asyncio.TimeoutError:
@@ -73,3 +72,21 @@ class Session(SessionManager):
 
         response = response_validator(method=method, status_code=response.status, content=content)
         return cast(LikeType, response.result)
+
+    async def stream(
+        self,
+        interface: Interface,
+        file: str,
+        timeout: int = 60,
+        chunk_size: int = 65536,
+        raise_for_status: bool = True,
+    ) -> AsyncGenerator[bytes, None]:
+        await self.create()
+
+        async with self.session.post(
+            url=interface.network.file(file=file),
+            timeout=timeout,
+            raise_for_status=raise_for_status,
+        ) as response:
+            async for chunk in response.content.iter_chunked(chunk_size):
+                yield chunk

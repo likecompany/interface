@@ -5,29 +5,27 @@ from typing import TYPE_CHECKING, Any, Dict, Generic, Optional, TypeVar
 
 from pydantic import BaseModel, ConfigDict, Extra
 
-from likeinterface.utils.pydantic import ExcludeNone
-
 if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 LikeType = TypeVar("LikeType")
 
 
-class Request(BaseModel, ExcludeNone):
+class Request(BaseModel):
     model_config = ConfigDict(arbitrary_types_allowed=True)
 
     method: str
     data: Dict[str, Any]
 
 
-class Response(BaseModel, ExcludeNone, Generic[LikeType]):
+class Response(BaseModel, Generic[LikeType]):
     ok: bool
     result: Optional[LikeType] = None
     error: Optional[str] = None
     error_code: Optional[int] = None
 
 
-class Method(abc.ABC, BaseModel, ExcludeNone, Generic[LikeType]):
+class Method(abc.ABC, BaseModel, Generic[LikeType]):
     model_config = ConfigDict(
         arbitrary_types_allowed=True,
         extra=Extra.allow,

@@ -6,12 +6,14 @@ from .auth import (
 )
 from .balance import GetBalanceMethod, RootBalanceMethod, SetNewBalanceMethod
 from .base import LikeType, Method, Request, Response
+from .file import GetFileMethod
 from .like import EvaluatorMethod, RootLikeMethod
 
 __all__ = (
     "EvaluatorMethod",
     "GetAuthorizationInformationMethod",
     "GetBalanceMethod",
+    "GetFileMethod",
     "GetUserInformationMethod",
     "RootAuthMethod",
     "LikeType",

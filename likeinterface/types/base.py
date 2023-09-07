@@ -2,10 +2,8 @@ from __future__ import annotations
 
 from pydantic import BaseModel, ConfigDict, Extra
 
-from likeinterface.utils.pydantic import ExcludeNone
 
-
-class LikeObject(ExcludeNone, BaseModel):
+class LikeObject(BaseModel):
     model_config = ConfigDict(
         frozen=True,
         extra=Extra.allow,
