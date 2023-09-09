@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class SignInMethod(Method[Authorization]):
+class SignIn(Method[Authorization]):
     """
     Use this method to sign in a user with a validated email address
 
@@ -25,7 +25,7 @@ class SignInMethod(Method[Authorization]):
       7. hash        | String  | Yes      | Hash of all fields
 
     Result
-      :class:`likeinterface.types.auth.authorization.Authorization`
+      :class:`likeinterface.types.authorization.Authorization`
     """
 
     __name__ = "auth.signIn"

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class GetAuthorizationInformationMethod(Method[User]):
+class GetAuth(Method[User]):
     """
     Use this method to get information about current user.
 
@@ -19,10 +19,10 @@ class GetAuthorizationInformationMethod(Method[User]):
       1. access_token | String | Yes      | Auth access token
 
     Result
-      :class:`likeinterface.types.auth.user.User`
+      :class:`likeinterface.types.user.User`
     """
 
-    __name__ = "auth.getAuthorizationInformation"
+    __name__ = "auth.getAuth"
     __returning__ = User
 
     access_token: str

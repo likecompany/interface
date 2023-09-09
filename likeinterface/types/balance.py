@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from likeinterface.types.base import LikeObject
 
 if TYPE_CHECKING:
-    from likeinterface.types import User
+    from .user import User
 
 
 class Balance(LikeObject):

@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class GetBalanceMethod(Method[Balance]):
+class GetBalance(Method[Balance]):
     """
     Use this method to get balance for user.
 
@@ -20,7 +20,7 @@ class GetBalanceMethod(Method[Balance]):
       2. access_token | String  | No       | Auth access token
 
     Result
-      :class:`likeinterface.types.balance.balance.Balance`
+      :class:`likeinterface.types.balance.Balance`
     """
 
     __name__ = "balance.getBalance"

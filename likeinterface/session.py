@@ -1,17 +1,71 @@
 from __future__ import annotations
 
 import asyncio
+import secrets
 from collections import defaultdict
-from typing import TYPE_CHECKING, Any, AsyncGenerator, Dict, Optional, cast
+from typing import TYPE_CHECKING, Any, AsyncGenerator, Dict, List, Optional, cast
 
+from aiohttp import FormData
 from aiohttp.client import ClientError, ClientSession
 
 from likeinterface.exceptions import LikeNetworkError
 from likeinterface.methods import LikeType, Method
+from likeinterface.types import InputFile
 from likeinterface.utils.response_validator import response_validator
 
 if TYPE_CHECKING:
     from likeinterface.interface import Interface
+
+
+class DataManager:
+    def prepare_value(self, value: Any, files: Dict[str, Any]) -> Any:
+        if value is None:
+            return None
+        if isinstance(value, str):
+            return value
+        if isinstance(value, InputFile):
+            key = secrets.token_urlsafe(10)
+            files[key] = value
+
+            return key
+
+        if isinstance(value, Dict):
+            value = {
+                key: prepared_item
+                for key, item in value.items()
+                if (prepared_item := self.prepare_value(item, files=files)) is not None
+            }
+
+            return value
+        if isinstance(value, List):
+            value = [
+                prepared_item
+                for item in value
+                if (prepared_item := self.prepare_value(item, files=files)) is not None
+            ]
+
+            return value
+
+        return value
+
+    def build_form_data(self, method: Method) -> FormData:
+        form = FormData(quote_fields=False)
+        files: Dict[str, Any] = defaultdict()
+
+        for key, value in method.model_dump().items():
+            value = self.prepare_value(value, files=files)
+            if not value:
+                continue
+            form.add_field(key, value)
+
+        for key, value in files.items():
+            form.add_field(
+                key,
+                value.read(),
+                filename=value.filename or key,
+            )
+
+        return form
 
 
 class SessionManager:
@@ -37,7 +91,7 @@ class SessionManager:
             await self.session.close()
 
 
-class Session(SessionManager):
+class Session(SessionManager, DataManager):
     def __init__(
         self,
         *,
@@ -54,12 +108,11 @@ class Session(SessionManager):
     ) -> LikeType:
         await self.create()
 
-        request = method.request(interface=interface)
-
         try:
             async with self.session.post(
                 url=interface.network.url(method=method.__name__),
-                json=request.data,
+                data=None if not method.__is_form__ else self.build_form_data(method=method),
+                json=None if method.__is_form__ else method.request(interface=interface).data,
                 timeout=timeout,
             ) as response:
                 content = await response.text()

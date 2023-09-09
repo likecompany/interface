@@ -1,28 +1,26 @@
-from .auth import (
-    GetAuthorizationInformationMethod,
-    GetUserInformationMethod,
-    RootAuthMethod,
-    SignInMethod,
-)
-from .balance import GetBalanceMethod, RootBalanceMethod, SetNewBalanceMethod
+from .add_collection import AddCollection
+from .add_file import AddFile
 from .base import LikeType, Method, Request, Response
-from .file import GetFileMethod
-from .like import EvaluatorMethod, RootLikeMethod
+from .evaluator import Evaluator
+from .get_auth import GetAuth
+from .get_balance import GetBalance
+from .get_collection import GetCollection
+from .get_file import GetFile
+from .get_user import GetUser
+from .sign_in import SignIn
 
 __all__ = (
-    "EvaluatorMethod",
-    "GetAuthorizationInformationMethod",
-    "GetBalanceMethod",
-    "GetFileMethod",
-    "GetUserInformationMethod",
-    "RootAuthMethod",
+    "AddCollection",
+    "AddFile",
+    "Evaluator",
+    "GetAuth",
+    "GetBalance",
+    "GetCollection",
+    "GetFile",
+    "GetUser",
     "LikeType",
     "Method",
     "Request",
     "Response",
-    "RootAuthMethod",
-    "RootBalanceMethod",
-    "RootLikeMethod",
-    "SetNewBalanceMethod",
-    "SignInMethod",
+    "SignIn",
 )

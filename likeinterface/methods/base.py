@@ -16,6 +16,7 @@ class Request(BaseModel):
 
     method: str
     data: Dict[str, Any]
+    files: Optional[Dict[str, Any]] = None
 
 
 class Response(BaseModel, Generic[LikeType]):
@@ -31,6 +32,10 @@ class Method(abc.ABC, BaseModel, Generic[LikeType]):
         extra=Extra.allow,
         populate_by_name=True,
     )
+
+    @property
+    def __is_form__(self) -> bool:
+        return False
 
     @property
     @abc.abstractmethod

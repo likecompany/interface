@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class SetNewBalanceMethod(Method[Balance]):
+class SetBalance(Method[Balance]):
     """
     Use this method to set new balance for user.
 
@@ -20,10 +20,10 @@ class SetNewBalanceMethod(Method[Balance]):
       2. balance | Integer | Yes      | New user balance
 
     Result
-      :class:`likeinterface.types.balance.balance.Balance`
+      :class:`likeinterface.types.balance.Balance`
     """
 
-    __name__ = "balance.setNewBalance"
+    __name__ = "balance.setBalance"
     __returning__ = Balance
 
     user_id: int

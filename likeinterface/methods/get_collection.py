@@ -3,29 +3,29 @@ from __future__ import annotations
 from typing import TYPE_CHECKING
 
 from likeinterface.methods.base import Method, Request
-from likeinterface.types import User
+from likeinterface.types import Collection
 
 if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class GetUserInformationMethod(Method[User]):
+class GetCollection(Method[Collection]):
     """
-    Use this method to get information about any user.
+    Use this method to get card collection.
 
     Parameters
       Name       | Type    | Required | Description
 
-      1. user_id | Integer | Yes      | User ID in the system
+      1. name    | String  | Yes      | Collection name
 
     Result
-      :class:`likeinterface.types.auth.user.User`
+      :class:`likeinterface.types.collection.Collection`
     """
 
-    __name__ = "auth.getUserInformation"
-    __returning__ = User
+    __name__ = "poker.collection.getCollection"
+    __returning__ = Collection
 
-    user_id: int
+    name: str
 
     def request(self, interface: Interface) -> Request:
         return Request(method=self.__name__, data=self.model_dump())

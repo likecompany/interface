@@ -9,7 +9,7 @@ if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class EvaluatorMethod(Method[List[Hand]]):
+class Evaluator(Method[List[Hand]]):
     """
     Use this method to evaluate hands.
 
@@ -21,7 +21,7 @@ class EvaluatorMethod(Method[List[Hand]]):
       2. hands | Array Of String | Yes      | Player hand, for example, ["2c2h", "2d2s"]
 
     Result
-      Array of :class:`likeinterface.types.like.hand.Hand`
+      Array of :class:`likeinterface.types.hand.Hand`
     """
 
     __name__ = "like.evaluator"

@@ -1,16 +1,25 @@
 from typing import List, Literal, Optional, Union
 
-from .auth import Authorization, User
+from .authorization import Authorization
 from .balance import Balance
 from .base import LikeObject, MutableLikeObject
+from .collection import Collection
+from .collection_element import CollectionElement
 from .file import File
-from .like import Hand
+from .hand import Hand
+from .input_file import BufferedInputFile, FileSystemInputFile, InputFile
+from .user import User
 
 __all__ = (
     "Authorization",
     "Balance",
+    "BufferedInputFile",
+    "Collection",
+    "CollectionElement",
     "File",
+    "FileSystemInputFile",
     "Hand",
+    "InputFile",
     "LikeObject",
     "MutableLikeObject",
     "User",
