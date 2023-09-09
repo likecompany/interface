@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any
+from typing import Any, Optional
 
 from pydantic.dataclasses import dataclass
 
@@ -12,7 +12,9 @@ class Network:
     """
 
     base: str
-    file_base: str
+    """Example: http://host:port/{method}"""
+    file_base: Optional[str] = None
+    """Example: http://host:port/{method}"""
 
     def url(self, **kwargs: Any) -> str:
         """
@@ -31,5 +33,8 @@ class Network:
         :param kwargs: format kwargs
         :return: url
         """
+
+        if not self.file_base:
+            raise RuntimeError("File service not specified")
 
         return self.file_base.format(**kwargs)
