@@ -25,7 +25,7 @@ class AddCollection(Method[File]):
     """
 
     __is_form__ = True
-    __name__ = "file.addFile"
+    __name__ = "collection.addCollection"
     __returning__ = File
 
     access_token: str

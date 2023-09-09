@@ -22,7 +22,7 @@ class GetCollection(Method[Collection]):
       :class:`likeinterface.types.collection.Collection`
     """
 
-    __name__ = "poker.collection.getCollection"
+    __name__ = "collection.getCollection"
     __returning__ = Collection
 
     name: str
