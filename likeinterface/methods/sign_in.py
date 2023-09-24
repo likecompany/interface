@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional
 
+from likeinterface.enums import Services
 from likeinterface.methods.base import Method, Request
 from likeinterface.types import Authorization
 
@@ -28,7 +29,8 @@ class SignIn(Method[Authorization]):
       :class:`likeinterface.types.authorization.Authorization`
     """
 
-    __name__ = "auth.signIn"
+    __service_name__ = Services.AUTH
+    __name__ = "signIn"
     __returning__ = Authorization
 
     telegram_id: int

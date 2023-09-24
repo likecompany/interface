@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from likeinterface.enums import Services
 from likeinterface.methods.base import Method, Request
 from likeinterface.types import File
 
@@ -22,7 +23,8 @@ class GetFile(Method[File]):
       :class:`likeinteface.types.file.File`
     """
 
-    __name__ = "file.getFile"
+    __service_name__ = Services.FILE
+    __name__ = "getFile"
     __returning__ = File
 
     file_id: str

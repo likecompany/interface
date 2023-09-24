@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from likeinterface.enums import Services
 from likeinterface.methods.base import Method, Request
 from likeinterface.types import User
 
@@ -9,7 +10,7 @@ if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class GetAuth(Method[User]):
+class GetMe(Method[User]):
     """
     Use this method to get information about current user.
 
@@ -22,7 +23,8 @@ class GetAuth(Method[User]):
       :class:`likeinterface.types.user.User`
     """
 
-    __name__ = "auth.getAuth"
+    __service_name__ = Services.AUTH
+    __name__ = "getMe"
     __returning__ = User
 
     access_token: str

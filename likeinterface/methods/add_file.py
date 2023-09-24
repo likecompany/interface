@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, Optional
 
+from likeinterface.enums import Services
 from likeinterface.methods.base import Method
 from likeinterface.types import File, InputFile
 
@@ -25,7 +26,8 @@ class AddFile(Method[File]):
     """
 
     __is_form__ = True
-    __name__ = "file.addFile"
+    __service_name__ = Services.FILE
+    __name__ = "addFile"
     __returning__ = File
 
     access_token: str

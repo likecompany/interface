@@ -39,6 +39,11 @@ class Method(abc.ABC, BaseModel, Generic[LikeType]):
 
     @property
     @abc.abstractmethod
+    def __service_name__(self) -> str:
+        ...
+
+    @property
+    @abc.abstractmethod
     def __name__(self) -> str:
         ...
 

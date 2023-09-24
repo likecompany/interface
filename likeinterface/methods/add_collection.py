@@ -2,14 +2,15 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
+from likeinterface.enums import Services
 from likeinterface.methods.base import Method
-from likeinterface.types import CollectionElement, File
+from likeinterface.types import Collection, CollectionElement
 
 if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class AddCollection(Method[File]):
+class AddCollection(Method[Collection]):
     """
     Use this method to add new card collection.
 
@@ -25,8 +26,9 @@ class AddCollection(Method[File]):
     """
 
     __is_form__ = True
-    __name__ = "collection.addCollection"
-    __returning__ = File
+    __service_name__ = Services.COLLECTION
+    __name__ = "addCollection"
+    __returning__ = Collection
 
     access_token: str
     name: str

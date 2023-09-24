@@ -2,6 +2,7 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
+from likeinterface.enums import Services
 from likeinterface.methods.base import Method, Request
 from likeinterface.types import Collection
 
@@ -22,7 +23,8 @@ class GetCollection(Method[Collection]):
       :class:`likeinterface.types.collection.Collection`
     """
 
-    __name__ = "collection.getCollection"
+    __service_name__ = Services.COLLECTION
+    __name__ = "getCollection"
     __returning__ = Collection
 
     name: str

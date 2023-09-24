@@ -8,6 +8,7 @@ from typing import TYPE_CHECKING, Any, AsyncGenerator, Dict, List, Optional, cas
 from aiohttp import FormData
 from aiohttp.client import ClientError, ClientSession
 
+from likeinterface.enums import Services
 from likeinterface.exceptions import LikeNetworkError
 from likeinterface.methods import LikeType, Method
 from likeinterface.types import InputFile
@@ -113,6 +114,7 @@ class Session(SessionManager, DataManager):
                 url=interface.network.url(method=method.__name__),
                 data=None if not method.__is_form__ else self.build_form_data(method=method),
                 json=None if method.__is_form__ else method.request(interface=interface).data,
+                headers={"X-Server-Name": method.__service_name__},
                 timeout=timeout,
             ) as response:
                 content = await response.text()
@@ -138,6 +140,7 @@ class Session(SessionManager, DataManager):
 
         async with self.session.post(
             url=interface.network.file(file=file),
+            headers={"X-Server-Name": Services.FILE},
             timeout=timeout,
             raise_for_status=raise_for_status,
         ) as response:
