@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
-from likeinterface.enums import Services
 from likeinterface.methods.base import Method, Request
 from likeinterface.types import Hand
 
@@ -25,8 +24,7 @@ class GetEvaluationResult(Method[List[Hand]]):
       Array of :class:`likeinterface.types.hand.Hand`
     """
 
-    __service_name__ = Services.LIKE
-    __name__ = "getEvaluationResult"
+    __name__ = "like/getEvaluationResult"
     __returning__ = List[Hand]
 
     board: List[str]

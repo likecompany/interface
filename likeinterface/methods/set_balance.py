@@ -25,7 +25,7 @@ class SetBalance(Method[Balance]):
     """
 
     __service_name__ = Services.BALANCE
-    __name__ = "setBalance"
+    __name__ = "balance/setBalance"
     __returning__ = Balance
 
     user_id: int

@@ -26,13 +26,13 @@ class Interface:
 
     async def stream(
         self,
-        file: str,
+        file_id: str,
         timeout: int = 60,
         chunk_size: int = 65536,
     ) -> AsyncGenerator[bytes, None]:
         return self.session.stream(
             interface=self,
-            file=file,
+            file_id=file_id,
             timeout=timeout,
             chunk_size=chunk_size,
         )

@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from likeinterface.enums import Services
 from likeinterface.methods.base import Method, Request
 from likeinterface.types import User
 
@@ -23,8 +22,7 @@ class GetUser(Method[User]):
       :class:`likeinterface.types.user.User`
     """
 
-    __service_name__ = Services.AUTH
-    __name__ = "getUser"
+    __name__ = "auth/getUser"
     __returning__ = User
 
     user_id: int

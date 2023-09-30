@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
-from likeinterface.enums import Services
 from likeinterface.methods.base import Method
 from likeinterface.types import Collection, CollectionElement
 
@@ -26,8 +25,7 @@ class AddCollection(Method[Collection]):
     """
 
     __is_form__ = True
-    __service_name__ = Services.COLLECTION
-    __name__ = "addCollection"
+    __name__ = "collection/addCollection"
     __returning__ = Collection
 
     access_token: str

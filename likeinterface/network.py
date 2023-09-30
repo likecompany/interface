@@ -14,7 +14,7 @@ class Network:
     base: str
     """Example: http://host:port/{method}"""
     file_base: Optional[str] = None
-    """Example: http://host:port/file/{file}"""
+    """Example: http://host:port/file/{file_id}"""
 
     def url(self, **kwargs: Any) -> str:
         """
