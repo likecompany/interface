@@ -1,17 +1,12 @@
 from __future__ import annotations
 
-from typing import TYPE_CHECKING, List
+from typing import TYPE_CHECKING, Optional
 
 from likeinterface.methods.base import Method, Request
-from likeinterface.types import LikeObject
+from likeinterface.types import Cards
 
 if TYPE_CHECKING:
     from likeinterface.interface import Interface
-
-
-class Cards(LikeObject):
-    board: List[str]
-    hands: List[str]
 
 
 class SetNextGame(Method[bool]):
@@ -34,7 +29,7 @@ class SetNextGame(Method[bool]):
 
     access: str
     find_winners: bool = False
-    cards: Cards
+    cards: Optional[Cards] = None
 
     def request(self, interface: Interface) -> None:
         return Request(method=self.__name__, data=self.model_dump())

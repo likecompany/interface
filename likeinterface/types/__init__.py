@@ -4,6 +4,7 @@ from .action import Action
 from .authorization import Authorization
 from .balance import Balance
 from .base import LikeObject, MutableLikeObject
+from .cards import Cards
 from .collection import Collection
 from .collection_element import CollectionElement
 from .file import File
@@ -18,6 +19,7 @@ __all__ = (
     "Authorization",
     "Balance",
     "BufferedInputFile",
+    "Cards",
     "Collection",
     "CollectionElement",
     "File",
