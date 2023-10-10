@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
+from pydantic import Field
+
 from likeinterface.methods.base import Method, Request
 from likeinterface.types import Player
 
@@ -35,13 +37,13 @@ class AddGame(Method[bool]):
     __returning__ = bool
 
     access: str
-    sb_bet: int
-    bb_bet: int
-    bb_mult: int
-    players: List[Player]
-    current: int
-    on_start_all_players_are_allin: bool
-    min_raise: int = 0
+    sb_bet: int = 500
+    bb_bet: int = 1000
+    bb_mult: int = 20
+    players: List[Player] = Field(default_factory=list)
+    current: int = 0
+    on_start_all_players_are_allin: bool = False
+    min_raise: int = 1000
     round: int = 0
     flop_dealt: bool = False
 

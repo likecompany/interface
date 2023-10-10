@@ -3,7 +3,7 @@ from __future__ import annotations
 from collections import defaultdict
 from typing import Any, AsyncGenerator, Dict, Optional
 
-import httpx
+from aiohttp.client import ClientSession
 
 from likeinterface.methods import LikeType, Method
 from likeinterface.network import Network
@@ -15,7 +15,7 @@ class Interface:
         self,
         network: Network,
         *,
-        session: Optional[httpx.AsyncClient] = None,
+        session: Optional[ClientSession] = None,
         connect_kwargs: Dict[str, Any] = defaultdict(),  # noqa
     ) -> None:
         self.network = network
