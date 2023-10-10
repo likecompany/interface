@@ -20,7 +20,7 @@ class GetBalance(Method[Balance]):
       2. access_token | String  | No       | Auth access token
 
     Result
-      :class:`likeinterface.types.balance.Balance`
+      :class:`Balance`
     """
 
     __name__ = "balance/getBalance"

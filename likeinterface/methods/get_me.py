@@ -19,7 +19,7 @@ class GetMe(Method[User]):
       1. access_token | String | Yes      | Auth access token
 
     Result
-      :class:`likeinterface.types.user.User`
+      :class:`User`
     """
 
     __name__ = "auth/getMe"

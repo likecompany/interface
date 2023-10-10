@@ -14,14 +14,14 @@ class AddCollection(Method[Collection]):
     Use this method to add new card collection.
 
     Parameters
-      Name                   | Type                       | Required | Description
+      Name                   | Type                                | Required | Description
 
-      1. access_token        | String                     | Yes      | Auth access token
-      2. name                | String                     | Yes      | Collection name
-      3. collection_elements | Array Of CollectionElement | Yes      | Collection set, requires all cards from Two Clubs to Ace Spades
+      1. access_token        | String                              | Yes      | Auth access token
+      2. name                | String                              | Yes      | Collection name
+      3. collection_elements | Array Of :class:`CollectionElement` | Yes      | Collection set, requires all cards from Two Clubs to Ace Spades
 
     Result
-      :class:`likeinteface.types.collection.Collection`
+      :class:`Collection`
     """
 
     __is_form__ = True

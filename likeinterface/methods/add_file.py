@@ -21,7 +21,7 @@ class AddFile(Method[File]):
       3. mime_type    | String | No       | File type in the system
 
     Result
-      :class:`likeinteface.types.file.File`
+      :class:`File`
     """
 
     __is_form__ = True

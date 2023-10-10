@@ -25,7 +25,7 @@ class SignIn(Method[Authorization]):
       7. hash        | String  | Yes      | Hash of all fields
 
     Result
-      :class:`likeinterface.types.authorization.Authorization`
+      :class:`Authorization`
     """
 
     __name__ = "auth/signIn"

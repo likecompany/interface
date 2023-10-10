@@ -19,7 +19,7 @@ class GetFile(Method[File]):
       1. file_id      | String | Yes      | File ID in the system
 
     Result
-      :class:`likeinteface.types.file.File`
+      :class:`File`
     """
 
     __name__ = "file/getFile"

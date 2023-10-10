@@ -19,7 +19,7 @@ class GetCollection(Method[Collection]):
       1. name    | String  | Yes      | Collection name
 
     Result
-      :class:`likeinterface.types.collection.Collection`
+      :class:`Collection`
     """
 
     __name__ = "collection/getCollection"

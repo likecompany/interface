@@ -21,7 +21,7 @@ class GetEvaluationResult(Method[List[Hand]]):
       2. hands | Array Of String | Yes      | Player hand, for example, ["2c2h", "2d2s"]
 
     Result
-      Array of :class:`likeinterface.types.hand.Hand`
+      Array of :class:`Hand`
     """
 
     __name__ = "like/getEvaluationResult"

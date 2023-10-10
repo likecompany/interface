@@ -21,7 +21,7 @@ class SetBalance(Method[Balance]):
       2. balance | Integer | Yes      | New user balance
 
     Result
-      :class:`likeinterface.types.balance.Balance`
+      :class:`Balance`
     """
 
     __service_name__ = Services.BALANCE

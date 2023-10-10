@@ -19,7 +19,7 @@ class GetUser(Method[User]):
       1. user_id | Integer | Yes      | User ID in the system
 
     Result
-      :class:`likeinterface.types.user.User`
+      :class:`User`
     """
 
     __name__ = "auth/getUser"
