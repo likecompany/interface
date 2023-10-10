@@ -19,7 +19,7 @@ class Game(LikeObject):
     """Players in the game."""
     current: int
     """Current player (index of players)."""
-    on_start_all_player_are_allin: bool
+    on_start_all_players_are_allin: bool
     """Players posted blinds and they in the allin state."""
     min_raise: int
     """Minimal raise."""

@@ -19,7 +19,7 @@ class AddGame(Method[bool]):
       Name                             | Type                     | Required | Description
 
       1. access                        | String                   | Yes      | Game unique ID
-      3. sb_bet                        | Integer                  | Yes      | Small blind bet
+      2. sb_bet                        | Integer                  | Yes      | Small blind bet
       3. bb_bet                        | Integer                  | Yes      | Big blind bet
       4. bb_mult                       | Integer                  | Yes      | For formula to join: stacksize >= bb_bet * bb_mult
       5. players                       | Array Of :class:`Player` | Yes      | Players in the game
