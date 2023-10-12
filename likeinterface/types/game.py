@@ -4,6 +4,8 @@ from typing import TYPE_CHECKING, List
 
 from likeinterface.types.base import LikeObject
 
+from ..enums import Position
+
 if TYPE_CHECKING:
     from .player import Player
 
@@ -17,7 +19,7 @@ class Game(LikeObject):
     """Formula to join: stacksize >= bb_bet * bb_mult."""
     players: List[Player]
     """Players in the game."""
-    current: int
+    current: Position
     """Current player (index of players)."""
     on_start_all_players_are_allin: bool
     """Players posted blinds and they in the allin state."""

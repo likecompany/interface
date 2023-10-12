@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+from likeinterface.enums import Action as AAction
+from likeinterface.enums import Position
 from likeinterface.types.base import LikeObject
 
 
@@ -10,7 +12,7 @@ class Action(LikeObject):
 
     amount: int
     """Action amount chips."""
-    action: int
+    action: AAction
     """Selected action."""
-    position: int
+    position: Position
     """Player position (equals to game players index)."""

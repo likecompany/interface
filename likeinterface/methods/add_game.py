@@ -4,6 +4,7 @@ from typing import TYPE_CHECKING, List
 
 from pydantic import Field
 
+from likeinterface.enums import Position, Round
 from likeinterface.methods.base import Method, Request
 from likeinterface.types import Player
 
@@ -37,14 +38,14 @@ class AddGame(Method[bool]):
     __returning__ = bool
 
     access: str
-    sb_bet: int = 500
-    bb_bet: int = 1000
-    bb_mult: int = 20
+    sb_bet: int
+    bb_bet: int
+    bb_mult: int
     players: List[Player] = Field(default_factory=list)
-    current: int = 0
+    current: Position = Position.SB
     on_start_all_players_are_allin: bool = False
-    min_raise: int = 1000
-    round: int = 0
+    min_raise: int
+    round: int = Round.PREFLOP
     flop_dealt: bool = False
 
     def request(self, interface: Interface) -> None:

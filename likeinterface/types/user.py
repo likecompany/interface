@@ -16,7 +16,7 @@ class User(LikeObject):
     """Optional. User photo."""
     first_name: str
     """User first name."""
-    last_name: Optional[str] = None
+    last_name: Optional[str]
     """Optional. User second name."""
     full_name: str
     """User first and second names."""

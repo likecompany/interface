@@ -14,5 +14,5 @@ class File(LikeObject):
     """Specified file name."""
     file_size: int
     """File size in bytes."""
-    mime_type: Optional[str] = None
+    mime_type: Optional[str]
     """File type."""

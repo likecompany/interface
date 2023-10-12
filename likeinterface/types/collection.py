@@ -14,7 +14,7 @@ class Collection(LikeObject):
     """Collection ID in the system."""
     name: str
     """Unique collection name."""
-    user: Optional[User] = None
+    user: Optional[User]
     """Collection creator."""
     collection_elements: List[CollectionElement]
     """Collection elements."""
