@@ -24,10 +24,10 @@ class AddGame(Method[bool]):
       3. bb_bet                        | Integer                  | Yes      | Big blind bet
       4. bb_mult                       | Integer                  | Yes      | For formula to join: stacksize >= bb_bet * bb_mult
       5. players                       | Array Of :class:`Player` | Yes      | Players in the game
-      6. current                       | Integer                  | Yes      | Current player (index of players)
+      6. current                       | :class:`Position`        | Yes      | Current player (index of players)
       7. on_start_all_player_are_allin | Boolean                  | Yes      | When blinds posted all players in allin state?
       8. min_raise                     | Integer                  | Yes      | Minimal raise
-      9. round                         | Integer                  | Yes      | Round: can be - 0 preflop, 1 flop, 2 turn, 3 river, 4 showdown
+      9. round                         | :class:`Round`           | Yes      | Round: can be - 0 preflop, 1 flop, 2 turn, 3 river, 4 showdown
       10. flop_dealt                   | Boolean                  | Yes      | Is flop dealt
 
     Result
@@ -45,7 +45,7 @@ class AddGame(Method[bool]):
     current: Position = Position.SB
     on_start_all_players_are_allin: bool = False
     min_raise: int
-    round: int = Round.PREFLOP
+    round: Round = Round.PREFLOP
     flop_dealt: bool = False
 
     def request(self, interface: Interface) -> None:

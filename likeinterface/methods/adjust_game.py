@@ -13,10 +13,10 @@ class AdjustGame(Method[bool]):
     Use this method to start/restart game.
 
     Parameters
-      Name                             | Type                     | Required | Description
+      Name           | Type    | Required | Description
 
-      1. access                        | String                   | Yes      | Game unique ID
-      2. is_new_game | Boolean | Yes | Is need to rotate players positions?
+      1. access      | String  | Yes      | Game unique ID
+      2. is_new_game | Boolean | Yes      | Is need to rotate players positions?
 
     Result
       :class:`bool`

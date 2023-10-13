@@ -2,7 +2,6 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING
 
-from likeinterface.enums import Services
 from likeinterface.methods.base import Method, Request
 from likeinterface.types import Balance
 
@@ -24,7 +23,6 @@ class SetBalance(Method[Balance]):
       :class:`Balance`
     """
 
-    __service_name__ = Services.BALANCE
     __name__ = "balance/setBalance"
     __returning__ = Balance
 

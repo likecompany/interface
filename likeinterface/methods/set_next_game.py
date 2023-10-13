@@ -17,8 +17,7 @@ class SetNextGame(Method[bool]):
       Name            | Type           | Required | Description
 
       1. access       | String         | Yes      | Game unique ID
-      2. find_winners | Boolean        | No       | If players joined to game or left then just start new game
-      3. cards        | :class:`Cards` | No       | Required :ref:`SetNextGame.find_winners` on true
+      2. cards        | :class:`Cards` | No       | Game cards
 
     Result
       :class:`bool`
@@ -28,7 +27,6 @@ class SetNextGame(Method[bool]):
     __returning__ = bool
 
     access: str
-    find_winners: bool = False
     cards: Optional[Cards] = None
 
     def request(self, interface: Interface) -> None:

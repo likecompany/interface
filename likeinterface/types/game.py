@@ -2,9 +2,8 @@ from __future__ import annotations
 
 from typing import TYPE_CHECKING, List
 
+from likeinterface.enums import Position, Round
 from likeinterface.types.base import LikeObject
-
-from ..enums import Position
 
 if TYPE_CHECKING:
     from .player import Player
@@ -25,7 +24,7 @@ class Game(LikeObject):
     """Players posted blinds and they in the allin state."""
     min_raise: int
     """Minimal raise."""
-    round: int
+    round: Round
     """Round: can be - 0 preflop, 1 flop, 2 turn, 3 river, 4 showdown."""
     flop_dealt: bool
     """Is flop dealt."""
