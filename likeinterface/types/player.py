@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-from likeinterface.enums import State
 from likeinterface.types.base import LikeObject
 
 
@@ -17,5 +16,5 @@ class Player(LikeObject):
     """Posted chips in the game."""
     round_bet: int
     """Posted chips for round."""
-    state: State
+    state: int
     """Player state (init, out, alive, allin)."""
