@@ -19,12 +19,12 @@ if TYPE_CHECKING:
 
 
 class DataManager:
-    def prepare_value(self, value: Any, files: Dict[str, Any]) -> Any:
+    def prepare_value(self, value: Any, files: Optional[Dict[str, Any]] = None) -> Any:
         if value is None:
             return None
         if isinstance(value, str):
             return value
-        if isinstance(value, InputFile):
+        if isinstance(value, InputFile) and files:
             key = secrets.token_urlsafe(10)
             files[key] = value
 
@@ -110,11 +110,18 @@ class Session(SessionManager, DataManager):
     ) -> LikeType:
         await self.create()
 
+        json = None
+        if not method.__is_form__:
+            json = {
+                key: self.prepare_value(value)
+                for key, value in method.request(interface=interface).data.items()
+            }
+
         try:
             async with self.session.post(
                 url=interface.network.url(method=method.__name__),
                 data=None if not method.__is_form__ else self.build_form_data(method=method),
-                json=None if method.__is_form__ else method.request(interface=interface).data,
+                json=json,
                 timeout=timeout,
             ) as response:
                 content = await response.text()
