@@ -3,6 +3,7 @@ from __future__ import annotations
 import asyncio
 import secrets
 from collections import defaultdict
+from enum import Enum
 from typing import TYPE_CHECKING, Any, AsyncGenerator, Dict, List, Optional, cast
 
 from aiohttp import FormData
@@ -28,7 +29,6 @@ class DataManager:
             files[key] = value
 
             return key
-
         if isinstance(value, Dict):
             value = {
                 key: prepared_item
@@ -45,6 +45,8 @@ class DataManager:
             ]
 
             return value
+        if isinstance(value, Enum):
+            return self.prepare_value(value.value, files=files)
 
         return value
 
