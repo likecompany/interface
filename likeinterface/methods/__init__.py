@@ -1,6 +1,7 @@
 from .add_collection import AddCollection
 from .add_file import AddFile
 from .add_game import AddGame
+from .adjust_game import AdjustGame
 from .base import LikeType, Method, Request, Response
 from .delete_game import DeleteGame
 from .execute_action import ExecuteAction
@@ -21,6 +22,7 @@ __all__ = (
     "AddCollection",
     "AddFile",
     "AddGame",
+    "AdjustGame",
     "DeleteGame",
     "ExecuteAction",
     "GetBalance",

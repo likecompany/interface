@@ -8,7 +8,7 @@ if TYPE_CHECKING:
     from likeinterface.interface import Interface
 
 
-class AddGame(Method[bool]):
+class AdjustGame(Method[bool]):
     """
     Use this method to start/restart game.
 
